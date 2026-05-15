@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Tangerine:wght@700&display=swap");
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #e50914;
+  --bg: #141414;
+  --text: #ffffff;
+  --muted: #aaaaaa;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+#pagina {
+  background-color: var(--bg);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.web { 
+  padding: 16px 24px; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.topbar {
+  display: flex; justify-content: space-between; align-items: center; padding: 12px 0; z-index: 10;
+}
+.logo { font-size: 26px; color: var(--red); font-weight: 900; letter-spacing: 2px; }
+nav#main-nav ul { display: flex; gap: 20px; list-style: none; }
+nav#main-nav ul li { cursor: pointer; font-size: 14px; color: var(--muted); }
+.user-avatar-placeholder { width: 36px; height: 36px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+.main-banner {
+  position: relative; display: flex; align-items: center; padding: 40px 0; min-height: 400px; border-radius: 10px; overflow: hidden;
+}
+
+.banner-img {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.6;
+  background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-eca7979c7096/410ed8b5-e6e2-45e6-8217-190f8f170f38/BR-pt-20231023-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+  background-size: cover; background-position: center center;
+}
+
+.overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0.5) 50%, rgba(20,20,20,0.1) 100%); 
+  z-index: 1;
+}
+
+.btn-change-bg {
+  position: absolute; top: 15px; right: 15px; z-index: 10;
+  background: rgba(0,0,0,0.6); color: white; border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 15px; border-radius: 4px; cursor: pointer; font-size: 13px; font-weight: bold;
+}
+.btn-change-bg:hover { background: rgba(0,0,0,0.8); }
+
+.info { z-index: 2; position: relative; max-width: 600px; padding: 0 20px; }
+.n-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; color: var(--text); }
+h1 { font-family: "Tangerine", cursive; font-size: 72px; line-height: 1; color: var(--text); margin: 10px 0; }
+.since-love { font-size: 14px; margin-bottom: 10px;}
+.green { color: #15b359; }
+.white { font-weight: bold; }
+.tag { background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+
+.subtext3 { display: flex; align-items: center; gap: 10px; margin: 15px 0; }
+.top10 { background: var(--red); color: white; padding: 4px 6px; font-size: 14px; font-weight: bold; text-align: center; line-height: 1; border-radius: 2px;}
+
+.description p { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,0.9); }
+.buttons { margin-top: 20px; display: flex; gap: 15px; }
+.btn-play, .btn-fav { padding: 10px 20px; font-size: 15px; font-weight: bold; border-radius: 4px; cursor: pointer; border: none; }
+.btn-play { background: white; color: black; }
+.btn-fav { background: rgba(109, 109, 110, 0.7); color: white; }
+
+.credits { margin-top: 20px; font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+.subnav { margin-top: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+.subnav ul { list-style: none; display: flex; gap: 20px; }
+.subnav li.active { border-bottom: 3px solid var(--red); font-weight: bold; padding-bottom: 5px;}
+
+/* GALERIA NUMA LINHA SÓ */
+.photo-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  padding: 20px 24px 30px 24px;
+  justify-content: space-between;
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* CAIXAS AGORA COM PROPORÇÃO FIXA (ASPECT RATIO 3:4) */
+.photo-box {
+  flex: 1;
+  flex-shrink: 0; 
+  min-width: 150px; 
+  aspect-ratio: 3 / 4; /* Garante ser Retrato, blindando distorções no PDF */
+  height: auto;
+  background: #333;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden; cursor: pointer; border: 2px dashed #555;
+}
+.photo-box span { color: #aaa; font-weight: bold; }
+.photo-box input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+
+#salvarPDFBtn {
+  background: var(--red); color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 5px; cursor: pointer; font-weight: bold;
+  margin-bottom: 30px;
+}
+
+#cropModal {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+#cropControls { margin-top: 20px; display: flex; gap: 10px; }
+#cropControls select, #cropControls button { padding: 10px; font-size: 16px; cursor: pointer; }
+
+footer {
+  background-color: #111;
+  color: #888;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 14px;
+}
+footer a { color: var(--red); text-decoration: none; font-weight: bold; }
+footer a:hover { text-decoration: underline; }
+
+/* RESPONSIVIDADE MOBILE */
+@media (max-width: 768px) {
+  .web { padding: 10px 15px; }
+  nav#main-nav { display: none; }
+  .main-banner { flex-direction: column; align-items: flex-start; min-height: auto; padding: 20px 0; }
+  
+  .banner-img {
+    width: 100%; height: 100%; opacity: 0.4;
+  }
+  .overlay { background: linear-gradient(to bottom, rgba(20,20,20,0.9) 0%, rgba(20,20,20,0.5) 100%); }
+  
+  h1 { font-size: 50px; }
+  .info { padding: 0 10px; width: 100%; }
+  
+  .buttons { flex-direction: column; width: 100%; }
+  .btn-play, .btn-fav { width: 100%; }
+  
+  .photo-container { padding: 10px; gap: 10px; }
+  .photo-box { min-width: 130px; } /* Mantém a proporção 3:4, mas diminui um pouco pra caber melhor */
+}
+
+@media print {
+  #salvarPDFBtn, #cropModal, .btn-change-bg { display: none !important; }
+}

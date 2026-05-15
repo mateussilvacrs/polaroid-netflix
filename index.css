@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+:root {
+  --red: #e50914;
+  --bg: #141414;
+  --text: #ffffff;
+  --muted: #aaaaaa;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #000;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+    flex-direction: column;
+
+}
+
+.bg-image {
+  position: absolute; inset: 0;
+  background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/a73c4363-1dcd-412e-8a3f-3afe95a0f18d/fe1147ee-fd14-4315-bbdb-dc7b94bf1d05/BR-pt-20231016-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+  background-size: cover; background-position: center; opacity: 0.5; z-index: 1;
+}
+
+.overlay-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.9) 100%);
+  z-index: 2;
+}
+
+.topbar-index {
+  position: absolute; top: 0; left: 0; width: 100%; padding: 25px 5%; z-index: 10;
+}
+.logo { font-size: 36px; color: #E50914; font-weight: 900; letter-spacing: 1px; }
+
+.container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 20px;
+}
+.txt-nome {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 40px 50px;
+  border-radius: 8px;
+  display: flex; flex-direction: column; gap: 20px;
+  width: 100%; max-width: 420px;
+}
+
+.form-title { color: #fff; font-size: 28px; font-weight: 700; margin-bottom: 5px; text-align: left; }
+.field-group { width: 100%; }
+
+input, textarea {
+  width: 100%; padding: 14px 15px; border: 1px solid #333; border-radius: 4px;
+  background-color: #333; color: #fff; font-size: 15px; outline: none; transition: 0.2s;
+}
+input:focus, textarea:focus { background-color: #444; border: 1px solid #777; }
+input::placeholder, textarea::placeholder { color: #8c8c8c; }
+
+textarea { height: 90px; resize: none; font-family: "Roboto", sans-serif; }
+
+.contador-wrapper { font-size: 12px; color: #8c8c8c; text-align: right; margin-top: 5px; }
+.barra-progresso { width: 100%; height: 3px; background-color: #444; border-radius: 2px; margin-top: 5px; overflow: hidden; }
+.barra-preenchida { height: 100%; width: 0%; background-color: #E50914; transition: width 0.3s; }
+
+button {
+  background-color: #E50914; color: #fff; border: none; border-radius: 4px;
+  font-size: 16px; font-weight: 500; padding: 16px; cursor: pointer; transition: 0.2s; margin-top: 15px;
+}
+button:hover { background-color: #c10710; }
+
+footer {
+  background-color: #111;
+  color: #888;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 14px;
+  width: 100%;
+  z-index: 10;
+  position: relative;
+}
+footer a { color: var(--red); text-decoration: none; font-weight: bold; }
+footer a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .txt-nome { padding: 30px 20px; }
+  .topbar-index { padding: 20px 5%; }
+  .logo { font-size: 28px; }
+  footer{ font-size: 12px; padding: 10px 5px; }
+}

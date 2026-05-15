@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css" rel="stylesheet" />
+    <title>Paulo Presentes</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="home.js" defer></script>
+  </head>
+  <body id="body">
+
+    <!-- ══ CONTEÚDO PRINCIPAL (capturado no PDF) ══ -->
+    <div id="pagina">
+      <div class="web">
+        <!-- TOPBAR -->
+        <header class="topbar">
+          <div class="logo">NETFLIX</div>
+          <nav id="main-nav">
+            <ul>
+              <li>Início</li>
+              <li>Séries</li>
+              <li>Filmes</li>
+              <li>Bombando</li>
+              <li>Minha Lista</li>
+            </ul>
+          </nav>
+          <div class="user-area">
+            <div class="user-avatar-placeholder">♥</div>
+          </div>
+        </header>
+
+        <!-- BANNER PRINCIPAL -->
+        <section class="main-banner">
+          <!-- BANNER IMAGE -->
+          <div class="banner-img" id="bannerImg"></div>
+          <div class="overlay"></div>
+          
+          <div class="info">
+            <span class="n-label">N Casais</span>
+            <div class="h1-name">
+              <h1>
+                <span id="primary-name" class="title">Fernanda</span>
+                &amp;
+                <span id="second-name" class="title">Cristian</span>
+              </h1>
+            </div>
+            <p class="since-love">
+              <span class="green">Juntos Desde <span id="span-ano" class="white">2000</span></span> | <span class="tag">1º Grande Amor</span>
+            </p>
+            <div class="subtext3">
+              <div class="top10">TOP <span class="span-top10">10</span></div>
+              <div class="txt-top-casais">Melhores Casais do Mundo</div>
+            </div>
+            <div class="description">
+              <p id="description">
+                Olho no olho e meu mundo parou, foi estranho como tudo começou...
+              </p>
+            </div>
+            <div class="buttons">
+              <button class="btn-play">▶ Play</button>
+              <button class="btn-fav">✓ Favorito</button>
+            </div>
+            <p class="credits">
+              Escrito por: <span id="span-primary-name">SEU NOME</span><br />
+              Destinado à: <span id="span-second-name">SEU NOME</span><br />
+              Características: Amor, Respeito e Felicidade!
+            </p>
+          </div>
+          
+          <!-- BOTÃO DE ALTERAR FUNDO -->
+          <input type="file" id="bgInput" accept="image/*" style="display:none" onchange="mudarFundo(this)" />
+          <button class="btn-change-bg" data-html2canvas-ignore="true" onclick="document.getElementById('bgInput').click()">
+            📷 Alterar Fundo
+          </button>
+        </section>
+
+        <!-- SUBNAV -->
+        <nav class="subnav">
+          <ul><li class="active">Nossa História</li></ul>
+        </nav>
+      </div>
+
+      <!-- GALERIA DE FOTOS (TODAS EM UMA LINHA COM PROPORÇÃO 3:4) -->
+      <div class="photo-container" id="fotos-container">
+        <div class="photo-box"><span>Foto 1</span><input type="file" accept="image/*" onchange="abrirCropper(this)" /></div>
+        <div class="photo-box"><span>Foto 2</span><input type="file" accept="image/*" onchange="abrirCropper(this)" /></div>
+        <div class="photo-box"><span>Foto 3</span><input type="file" accept="image/*" onchange="abrirCropper(this)" /></div>
+        <div class="photo-box"><span>Foto 4</span><input type="file" accept="image/*" onchange="abrirCropper(this)" /></div>
+        <div class="photo-box"><span>Foto 5</span><input type="file" accept="image/*" onchange="abrirCropper(this)" /></div>
+      </div>
+    </div>
+    <!-- /#pagina -->
+
+    <!-- BOTÃO SALVAR PDF -->
+    <div style="text-align:center; padding: 20px;">
+      <button id="salvarPDFBtn" onclick="salvarPDF()">📄 Salvar em PDF</button>
+    </div>
+
+    <!-- MODAL DE CORTE -->
+    <div id="cropModal" style="display:none;">
+      <div style="max-height: 80vh; overflow:hidden;">
+        <img id="cropImage" alt="Imagem para cortar" style="max-width:100%;" />
+      </div>
+      <div id="cropControls">
+        <select id="aspectRatioSelect" onchange="mudarProporcao()">
+          <option value="NaN">Livre</option>
+          <option value="0.75">Retrato (3:4)</option>
+          <option value="1">Quadrado (1:1)</option>
+          <option value="1.7777777777777777">Paisagem (16:9)</option>
+        </select>
+        <button onclick="confirmarCorte()">✔ Confirmar</button>
+        <button onclick="fecharCropper()">✕ Cancelar</button>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <p>&copy; Desenvolvido por <a href="https://github.com/mateussilvacrs" target="_blank">Mateus Silva</a>. Todos os direitos reservados.</p>
+  </footer>
+</html>
