@@ -52,7 +52,7 @@ nav#main-nav ul li { cursor: pointer; font-size: 14px; color: var(--muted); }
 
 .overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0.5) 50%, rgba(20,20,20,0.1) 100%); 
+  background: linear-gradient(to right, rgba(20, 20, 20, 0.753) 0%, rgba(20, 20, 20, 0.137) 50%, rgba(20,20,20,0.1) 100%); 
   z-index: 1;
 }
 
